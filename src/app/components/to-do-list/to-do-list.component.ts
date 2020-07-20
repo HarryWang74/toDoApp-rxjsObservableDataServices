@@ -14,7 +14,6 @@ import {TodoStore} from "../../state/TodoStore";
   styleUrls: ['./to-do-list.component.scss']
 })
 export class ToDoListComponent implements OnInit {
-    private addToDoListener: any;
     private updateToDoListener: any;
     private deleteToDoListener: any;
     today: Date = new Date();
@@ -36,9 +35,6 @@ export class ToDoListComponent implements OnInit {
   }
 
   setupSubscriptions() {
-    this.addToDoListener = this.applicationMessageService.subscribe('TODO_LIST_ADD_TODO', (params) => {
-        this.toDoList.unshift(params.toDo);
-    });
     this.updateToDoListener = this.applicationMessageService.subscribe('FIND_UPDATED_TODO_FROM_LIST', (params) => {
       let updatedToDo = this.toDoList.find(toDo => toDo.id === params.toDo.id);
       if (updatedToDo != null) {
@@ -60,12 +56,6 @@ export class ToDoListComponent implements OnInit {
   }
 
   removeSubscriptions() {
-    if (this.addToDoListener) {
-        this.addToDoListener.remove();
-    }
-    if(this.updateToDoListener) {
-        this.addToDoListener.remove();
-    }
     if (this.deleteToDoListener) {
         this.deleteToDoListener.remove();
     }

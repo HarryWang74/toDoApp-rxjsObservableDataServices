@@ -29,11 +29,9 @@ export class TodoStore {
             },
         );
     }
+    addToDo(newTodo:ToDo) {
 
-    /*
-    addTodo(newTodo:ToDo):Observable {
-
-        let obs = this.todoBackendService.saveTodo(newTodo);
+        let obs = this.todoBackendService.createToDo(newTodo);
 
         obs.subscribe(
                 res => {
@@ -43,20 +41,23 @@ export class TodoStore {
         return obs;
     }
 
-
-    deleteTodo(deleted:Todo): Observable {
-        let obs: Observable = this.todoBackendService.deleteTodo(deleted);
+    deleteTodo(deleted:ToDo) {
+        let obs = this.todoBackendService.deleteToDo(deleted);
 
         obs.subscribe(
                 res => {
-                    let todos: List<Todo> = this._todos.getValue();
+                    let todos: List<ToDo> = this._todos.getValue();
                     let index = todos.findIndex((todo) => todo.id === deleted.id);
                     this._todos.next(todos.delete(index));
-
                 }
             );
 
         return obs;
     }
+    /*
+
+
+
+
     */
 }

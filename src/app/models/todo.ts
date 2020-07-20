@@ -1,4 +1,4 @@
-import {List,Record} from 'immutable';
+import {Record} from 'immutable';
 
 const TodoRecord = Record({
     id: 0,
@@ -11,5 +11,4 @@ export class ToDo extends TodoRecord {
     constructor(props) {
         super(props);
     }
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDo } from './../../models/todo';
 import { ToDoService } from '../../services/to-do.service';
 import { ApplicationMessageService } from '../../services/applicationMessage.service';
@@ -9,9 +9,11 @@ import { ApplicationMessageService } from '../../services/applicationMessage.ser
   styleUrls: ['./to-do-detail.component.scss']
 })
 export class ToDoDetailComponent implements OnInit {
-	toDo: ToDo;
+	toDo: any;
 	updateing: boolean;
 	editListener: any;
+
+	@Output() delToDo = new EventEmitter();
 
 	constructor(
 		private toDoService: ToDoService,
@@ -29,7 +31,7 @@ export class ToDoDetailComponent implements OnInit {
 	setupSubscriptions() {
 		this.editListener = this.applicationMessageService.subscribe('EDIT_TODO', (params) => {
 			this.updateing = true;
-			// this.toDo = Object.assign(new ToDo(), params.toDo);
+			this.toDo = Object.assign({}, params.toDo);
 		});
   	}
   
@@ -50,11 +52,7 @@ export class ToDoDetailComponent implements OnInit {
 	}
     deleteToDo() {
 		this.updateing = true;
-		this.toDoService.deleteToDo(this.toDo).subscribe(
-			(result) => {
-				this.updateing = false;
-				this.applicationMessageService.publish('REMOVE_DELETED_TODO_FROM_LIST', { toDo: this.toDo });
-			}
-		)
+		this.applicationMessageService.publish('REMOVE_DELETED_TODO_FROM_LIST', {});
+		this.delToDo.emit(this.toDo);
   	}
 }

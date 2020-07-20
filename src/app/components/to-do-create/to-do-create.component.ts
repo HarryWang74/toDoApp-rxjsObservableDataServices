@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDo } from './../../models/todo';
 import { ToDoService } from '../../services/to-do.service';
 import { ApplicationMessageService } from '../../services/applicationMessage.service';
+import {TodoStore} from "../../state/TodoStore";
+
 @Component({
   selector: 'to-do-create',
   templateUrl: './to-do-create.component.html',
@@ -10,10 +12,13 @@ import { ApplicationMessageService } from '../../services/applicationMessage.ser
 export class ToDoCreateComponent implements OnInit {
   create: boolean = false;
   creating: boolean = false;
-  toDo: ToDo;
+  toDo: ToDo = new ToDo({id:0, subject:""});
   
+  @Output() todo = new EventEmitter();
+
   constructor(
     private toDoService: ToDoService,
+    private toDoStore: TodoStore,
     private applicationMessageService: ApplicationMessageService
   ) { }
 
@@ -22,28 +27,14 @@ export class ToDoCreateComponent implements OnInit {
 
   startCreateToDo() {
     this.create = true;
-    this.toDo.subject = "";
     setTimeout(() => {
         document.getElementById("newToDoSubject").focus();
     }, 100);
   }
 
 
-  savingToDo() {
-
-    if (this.toDo.subject !== undefined && this.toDo.subject.trim() !== "") {
-        this.creating = true;
-        console.log(this.toDo);
-        /*
-        this.toDoService.createToDo(this.toDo).subscribe(
-            (result: ToDo) => {
-                this.creating = false;
-                this.create = false;
-                this.toDo = new ToDo();
-                this.applicationMessageService.publish('TODO_LIST_ADD_TODO', { toDo: result});
-            },
-        );
-        */
-    }
+  savingToDo(input) {
+    this.todo.emit(input.value);
+    input.value = "";
   } 
 }

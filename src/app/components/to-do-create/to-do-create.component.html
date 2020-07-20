@@ -8,10 +8,10 @@
   <ng-container *ngIf="create && !creating">
       <div class="toDoWrapper">
           <span class="toDoIndicator"></span>
-          <input id="newToDoSubject"
-                 (keyup.enter)="savingToDo()"
-                 [(ngModel)]="toDo.subject"
-                 (blur)="savingToDo()" />
+          <form id="todo-form" (ngSubmit)="savingToDo(input)" autocomplete="off">
+            <input id="newToDoSubject" #input>
+        </form>
+
       </div>
   </ng-container>
 </div>

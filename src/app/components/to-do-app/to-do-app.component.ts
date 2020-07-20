@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationMessageService } from '../../services/applicationMessage.service';
 import { TodoStore } from '../../state/TodoStore';
+import { ToDo } from './../../models/todo';
 
 @Component({
   selector: 'to-do-app',
@@ -48,5 +49,14 @@ export class ToDoAppComponent implements OnInit {
     if(this.deleteListener){
       this.deleteListener.remove();
     }
+  }
+
+  onAddTodo(description) {
+    let newTodo = new ToDo({id:0, description});
+    this.todoStore.addToDo(newTodo).subscribe(res => {});
+  }
+
+  onDeleteToDo(toDo){
+    this.todoStore.deleteTodo(toDo).subscribe(res => {});
   }
 }
