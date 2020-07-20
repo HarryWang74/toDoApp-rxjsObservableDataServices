@@ -1,0 +1,132 @@
+@mixin synergy-round-corners($radius: 5px) {
+    -webkit-border-radius: $radius; // Safari
+    -moz-border-radius: $radius; // For Mozilla
+    -o-border-radius: $radius; // For Opera
+    border-radius: $radius;
+}
+
+@mixin synergy-transform($property) {
+    transform: $property;
+    -moz-transform: $property;
+    -o-transform: $property;
+    -ms-transform: $property;
+    -webkit-transform: $property;
+}
+
+@mixin synergy-transition($property, $duration, $effect) {
+    transition: $property $duration $effect;
+    -webkit-transition: $property $duration $effect;
+    -o-transition: $property $duration $effect;
+    -moz-transition: $property $duration $effect;
+}
+
+@mixin noSelectAble() {
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+}
+
+
+// colors provided by the designers
+
+$color-page: #F0EFF4;
+$color-border: #e2e2e4;
+$color-text: #333333;
+$color-table-highlight: #FFFFFF;
+
+$color-black: black;
+$color-white : white;
+
+$color-gray-deepdark: #333333; // #222
+$color-gray-darkest: #444444;
+$color-gray-darker: #555555;
+$color-gray-dark: #666666;
+$color-gray: #777777;
+$color-gray-light: #888888; //custom
+$color-gray-lighter: #999999; //custom
+$color-gray-lightest: #aaaaaa;
+$color-gray-bright: #bbbbbb;
+$color-gray-lowlight: #cccccc;
+$color-gray-highlight: #dddddd;
+
+$color-teal-darkest: #0f7b80;
+$color-teal-darker: #1d8d91;
+$color-teal-dark: #20a0a4;
+$color-teal: #27b4b9;
+$color-teal-light: #2cc4c9;
+$color-teal-lighter: #32d0d5;
+$color-teal-lightest: #5adfe3;
+$color-teal-bright: #92f1f4;
+$color-teal-lowlight: #aefafc;
+$color-teal-highlight: #d2fbfc;
+
+$color-light-blue-darkest: #00698f;
+$color-light-blue-darker: #007fAD;
+$color-light-blue-dark: #0099d1;
+$color-light-blue: #00aeef;
+$color-light-blue-light: #12b3fc;
+$color-light-blue-lighter: #36c9ff;
+$color-light-blue-lightest: #66d4ff;
+$color-light-blue-bright: #8fdfff;
+$color-light-blue-lowlight: #b5e8fe;
+$color-light-blue-highlight: #ccf1fe;
+
+$color-dark-blue-darkest: #003c63;
+$color-dark-blue-darker: #024977;
+$color-dark-blue-dark: #005790;
+$color-dark-blue: #0062a2;
+$color-dark-blue-light: #076cb0;
+$color-dark-blue-lighter: #197bbd;
+$color-dark-blue-lightest: #3192d4;
+$color-dark-blue-bright: #5ebaf2;
+$color-dark-blue-lowlight: #96d7ff;
+$color-dark-blue-highlight: #bde6ff;
+
+$color-green-darkest: #269d4e;
+$color-green-darker: #2aab55;
+$color-green-dark: #2fbb5e;
+$color-green: #33cc66;
+$color-green-light: #36d76c;
+$color-green-lightest: #3ce374;
+$color-green-lowlight: #45f17f;
+$color-green-highlight: #56ff8f;
+
+$color-red-darkest: #bd3820;
+$color-red-darker: #cf3d23;
+$color-red-dark: #db4c32;
+$color-red: #ea6149;
+$color-red-light: #f57058;
+$color-red-lightest: #ff7f66;
+$color-red-lowlight: #ff8c75;
+$color-red-highlight: #ffa18f;
+$color-red-new: #F44343;
+
+$color-orange-darkest: #eb672f;
+$color-orange-darker: #f07630;
+$color-orange-dark: #f78731;
+$color-orange: #ff9933;
+$color-orange-light: #ffa733;
+$color-orange-lightest: #ffb433;
+$color-orange-lowlight: #ffc14d;
+$color-orange-highlight: #ffd36e;
+
+$color-yellow-darkest: #f7bc28;
+$color-yellow-darker: #f7c728;
+$color-yellow-dark: #ffde24;
+$color-yellow: #ffeb3b;
+$color-yellow-light: #ffef62;
+$color-yellow-lightest: #fff67d;
+$color-yellow-lowlight: #fff9a1;
+$color-yellow-highlight: #fffbc9;
+
+$color-font: #555;
+
+$stage-pill-color: #00549B;
+$task-pill-color: #19AAE4;
+$reource-precent-pill-color: $stage-pill-color;
+
+$color-success: $color-green;
+$color-warning: $color-orange;
+$color-danger: $color-red;
+$color-error: #F44343;

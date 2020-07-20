@@ -1,0 +1,8 @@
+<div class="container">
+  <h3>ToDoList</h3>
+  <ng-container *ngIf="!editing">
+    <to-do-create></to-do-create>
+    <to-do-list></to-do-list>
+  </ng-container>
+  <to-do-detail></to-do-detail>
+</div>

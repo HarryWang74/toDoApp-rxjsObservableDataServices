@@ -1,0 +1,15 @@
+<div class="TStoDoDetail" [ngClass]="{'updateing': updateing }" >  
+  <div class="row" *ngIf="toDo">
+      <div class="col-md-12">
+          <div class="form-group toDoSubject">
+              <input type="text"
+                     class="clickable"
+                     [(ngModel)]="toDo.subject" />
+          </div>
+      </div>
+      <div>
+        <button mat-flat-button color="primary" (click)=updateToDo() style="margin-right: 10px;">Save</button>
+        <button mat-flat-button (click)=deleteToDo()>Delete</button>
+      </div>
+  </div>
+</div>

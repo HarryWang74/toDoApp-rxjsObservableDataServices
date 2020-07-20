@@ -1,0 +1,165 @@
+@import "../../variables";
+
+.TStoDoDetail {
+    display: none;
+    .info {
+        font-size: 9px;
+    }
+
+    &.updateing{
+        display: block;
+    }
+    .allStaffWrapper {
+        padding-top: 20px;
+        padding-left: 10px;
+
+        .staffWrapper {
+            font-size: 12px;
+            font-weight: 400;
+            padding-left: 38px;
+            text-align: left;
+            position: relative;
+            min-height: 30px;
+            margin-bottom: 0px;
+            padding-top: 9px;
+            padding-bottom: 9px;
+            margin-bottom: 5px;
+            svg{
+                
+            }
+            &.selectedStaff {
+                svg{
+                    display: inline-block;
+                }
+                .avator {
+                    display: none;
+                }
+            }
+
+
+
+
+            .avator {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                top: 1px;
+                left: -10px;
+                @include synergy-round-corners(999px);
+                img {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    display: inline-block;
+                    width: 30px;
+                    clip-path: circle(15px at center);
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .staffSelected {
+            font-weight: bold;
+            color: #555;
+
+            resource-chart {
+                display: none;
+            }
+
+            svg {
+            }
+        }
+    }
+
+    .sectionTitle {
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .toDoSubject {
+        margin-bottom: 15px;
+        margin-top: 5px;
+
+        .clickable {
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            font-size: 1.4em;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+
+            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                font-size: 1.4em;
+                color: $color-gray-lightest;
+            }
+
+            &::-moz-placeholder { /* Firefox 19+ */
+                font-size: 1.4em;
+            }
+
+            &:-ms-input-placeholder { /* IE 10+ */
+                font-size: 1.4em;
+            }
+
+            &:-moz-placeholder { /* Firefox 18- */
+                font-size: 1.4em;
+            }
+
+            box-shadow: none;
+            outline: none;
+            border: 1px dashed #e0e0e0 !important;
+        }
+
+        input:focus {
+            box-shadow: none;
+            outline: none;
+            border: 1px dashed #e0e0e0 !important;
+        }
+    }
+
+    svg {
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        top: 1px;
+        left: -10px;
+    }
+
+    .circ {
+        stroke-dasharray: 130;
+        stroke-dashoffset: 130;
+        -webkit-transition: all 1s;
+        -moz-transition: all 1s;
+        -ms-transition: all 1s;
+        -o-transition: all 1s;
+        transition: all 1s;
+    }
+
+    .tick {
+        stroke-dasharray: 50;
+        stroke-dashoffset: 50;
+        -webkit-transition: stroke-dashoffset 1s 0.5s ease-out;
+        -moz-transition: stroke-dashoffset 1s 0.5s ease-out;
+        -ms-transition: stroke-dashoffset 1s 0.5s ease-out;
+        -o-transition: stroke-dashoffset 1s 0.5s ease-out;
+        transition: stroke-dashoffset 1s 0.5s ease-out;
+    }
+
+    .drawn + svg .path {
+        display: inline-block;
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+}
