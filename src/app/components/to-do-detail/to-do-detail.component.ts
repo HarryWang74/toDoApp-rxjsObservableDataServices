@@ -29,7 +29,7 @@ export class ToDoDetailComponent implements OnInit {
 	setupSubscriptions() {
 		this.editListener = this.applicationMessageService.subscribe('EDIT_TODO', (params) => {
 			this.updateing = true;
-			this.toDo = Object.assign(new ToDo(), params.toDo);
+			// this.toDo = Object.assign(new ToDo(), params.toDo);
 		});
   	}
   

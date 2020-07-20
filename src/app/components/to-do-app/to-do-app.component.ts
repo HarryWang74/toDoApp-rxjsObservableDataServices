@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationMessageService } from '../../services/applicationMessage.service';
+import { TodoStore } from '../../state/TodoStore';
+
 @Component({
   selector: 'to-do-app',
   templateUrl: './to-do-app.component.html',
@@ -12,7 +14,8 @@ export class ToDoAppComponent implements OnInit {
   deleteListener: any;
 
   constructor(
-    private applicationMessageService: ApplicationMessageService
+    private applicationMessageService: ApplicationMessageService,
+    private todoStore: TodoStore
   ) { }
 
   ngOnInit() {

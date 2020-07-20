@@ -1,14 +1,10 @@
 <div class="TStoDoList">
-  <ng-container *ngIf="!loadingToDoList && toDoList">
-      <ng-container *ngIf="toDoList.length > 0">
-          <div *ngFor="let toDo of toDoList; let i=index; trackBy: toDoTrackElement;"
-               (click)="editTodo(toDo)"
-               class="toDoWrapper clickAble">
-              <span class="toDoIndicator"></span>
-              <div class="subject">
-                  {{toDo.subject}}
-              </div>
-          </div>
-      </ng-container>
-  </ng-container>
+    <div *ngFor="let toDo of todoStore.todos | async"
+        (click)="editTodo(toDo)"
+        class="toDoWrapper clickAble">
+        <span class="toDoIndicator"></span>
+        <div class="subject">
+            {{toDo.subject}}
+        </div>
+    </div>
 </div>

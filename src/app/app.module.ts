@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { ToDoCreateComponent } from './components/to-do-create/to-do-create.component';
 import { ToDoDetailComponent } from './components/to-do-detail/to-do-detail.component';
 import { ToDoAppComponent } from './components/to-do-app/to-do-app.component';
+import { TodoStore } from './state/TodoStore';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { ToDoAppComponent } from './components/to-do-app/to-do-app.component';
   exports: [
     MatIconModule
   ],
-  providers: [ToDoService, ApplicationMessageService],
+  providers: [ToDoService, ApplicationMessageService, TodoStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,8 +10,7 @@ import { ApplicationMessageService } from '../../services/applicationMessage.ser
 export class ToDoCreateComponent implements OnInit {
   create: boolean = false;
   creating: boolean = false;
-  toDo: ToDo = new ToDo()
-  dueDate: Date = new Date(Date.now() + 12096e5);
+  toDo: ToDo;
   
   constructor(
     private toDoService: ToDoService,
@@ -34,8 +33,8 @@ export class ToDoCreateComponent implements OnInit {
 
     if (this.toDo.subject !== undefined && this.toDo.subject.trim() !== "") {
         this.creating = true;
-        this.toDo.dueDate = this.dueDate;
         console.log(this.toDo);
+        /*
         this.toDoService.createToDo(this.toDo).subscribe(
             (result: ToDo) => {
                 this.creating = false;
@@ -44,7 +43,7 @@ export class ToDoCreateComponent implements OnInit {
                 this.applicationMessageService.publish('TODO_LIST_ADD_TODO', { toDo: result});
             },
         );
-
+        */
     }
   } 
 }

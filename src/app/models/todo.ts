@@ -1,15 +1,15 @@
+import {List,Record} from 'immutable';
 
+const TodoRecord = Record({
+    id: 0,
+    subject: ""
+});
 
-export class ToDo {
-    id: number;
-    subject: string;
-    completed: boolean;
-    overdue?: boolean;
-    dueDate: Date;
-    assignedContactId: number;
-    assignedContactName: string;
-    assignedContactImageUrl: string;
-    saving?: boolean;
+export class ToDo extends TodoRecord {
+    id:number;
+    subject:string;
+    constructor(props) {
+        super(props);
+    }
+
 }
-
-
