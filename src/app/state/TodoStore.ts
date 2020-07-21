@@ -29,6 +29,7 @@ export class TodoStore {
             },
         );
     }
+    
     addToDo(newTodo): Observable<Object> {
         let obs: Observable<Object> = this.todoBackendService.createToDo(newTodo);
         obs.subscribe(
@@ -42,11 +43,10 @@ export class TodoStore {
 
     deleteTodo(deleted:ToDo) {
         let obs = this.todoBackendService.deleteToDo(deleted);
-
         obs.subscribe(
-            (res: ToDo) => {
+            res => {
                 let todos: List<ToDo> = this._todos.getValue();
-                let index = todos.findIndex((todo) => todo.id === res.id);
+                let index = todos.findIndex((todo) => todo.id === deleted.id);
                 this._todos.next(todos.delete(index));
             }
         );
