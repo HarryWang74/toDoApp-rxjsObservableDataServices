@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TodoStore } from '../../state/TodoStore';
 
 @Component({
   selector: 'to-do-create',
@@ -10,7 +11,9 @@ export class ToDoCreateComponent implements OnInit {
   
   @Output() todo = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private todoStore: TodoStore
+  ) { }
 
   ngOnInit() {
   }
@@ -24,7 +27,8 @@ export class ToDoCreateComponent implements OnInit {
 
 
   savingToDo(input) {
-    this.todo.emit(input.value);
+    let newTodo = {subject: input.value};
+    this.todoStore.addToDo(newTodo);
     setTimeout(() => {
       input.value = ""
       this.create = false;

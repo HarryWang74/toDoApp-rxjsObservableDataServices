@@ -30,7 +30,7 @@ export class TodoStore {
         );
     }
     
-    addToDo(newTodo:ToDo): Observable<Object> {
+    addToDo(newTodo): Observable<Object> {
         let obs: Observable<Object> = this.todoBackendService.createToDo(newTodo);
         obs.subscribe(
             (res:ToDo) => {
