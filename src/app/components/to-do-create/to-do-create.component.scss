@@ -2,6 +2,9 @@
 
 .TScreateToDo {
     padding-bottom: 10px;
+    &.editing{
+        display: none;
+    }
     .createBtnWrapper {
         padding: 10px;
         @include synergy-round-corners(5px);

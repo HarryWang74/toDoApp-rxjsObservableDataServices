@@ -8,17 +8,17 @@ import { TodoStore } from '../../state/TodoStore';
   styleUrls: ['./to-do-detail.component.scss']
 })
 export class ToDoDetailComponent implements OnInit {
-	@Output() delToDo = new EventEmitter();
-	@Output() updateToDo = new EventEmitter();
 	@Input() selectedToDo: ToDo;
-	@Input() editing: boolean;
+	editing: boolean = false;
 
 	constructor(
 		private todoStore: TodoStore
 	) { }
 
 	ngOnInit() {
-		
+		this.todoStore.editing.subscribe((editing: boolean)=>{
+			this.editing = editing;
+		});
 	}
 
 	saveToDo() {

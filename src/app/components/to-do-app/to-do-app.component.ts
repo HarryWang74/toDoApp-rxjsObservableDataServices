@@ -30,7 +30,7 @@ export class ToDoAppComponent implements OnInit {
 
   onSelectToDo(toDo){
     this.selectedToDo = toDo;
-    this.editing = true;
+
     console.log(this.selectedToDo);
   }
 }

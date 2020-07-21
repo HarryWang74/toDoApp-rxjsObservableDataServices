@@ -9,6 +9,7 @@ import {TodoStore} from "../../state/TodoStore";
 })
 
 export class ToDoListComponent implements OnInit {
+  editing: boolean = false;
   @Output() selectToDo = new EventEmitter();
 
   constructor(
@@ -16,9 +17,14 @@ export class ToDoListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.todoStore.editing.subscribe((editing: boolean)=>{
+      this.editing = editing;
+    });
   }
 
   editTodo(toDo: ToDo) {
-    this.selectToDo.emit(toDo);
+    console.log("click");
+    this.todoStore.selectToDo();
+    // this.selectToDo.emit(toDo);
   }
 }

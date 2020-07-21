@@ -2,11 +2,12 @@
 
 .TStoDoDetail {
     display: none;
+
     .info {
         font-size: 9px;
     }
 
-    &.updateing{
+    &.editing{
         display: block;
     }
     .allStaffWrapper {

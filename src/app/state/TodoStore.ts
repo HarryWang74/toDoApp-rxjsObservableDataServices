@@ -10,7 +10,9 @@ import {BehaviorSubject} from "rxjs";
 
 @Injectable()
 export class TodoStore {
-
+    isEditingSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    editing = this.isEditingSubject.asObservable()
+    
     private _todos: BehaviorSubject<List<ToDo>> = new BehaviorSubject(List([]));
 
     constructor(private todoBackendService: ToDoService) {
@@ -54,9 +56,11 @@ export class TodoStore {
     }
 
     updateTodo(toDo:ToDo): Observable<Object> {
+        this.isEditingSubject.next(true);
         let obs: Observable<Object> = this.todoBackendService.updateToDo(toDo);
         obs.subscribe(
             (res: ToDo) => {
+                this.isEditingSubject.next(false);
                 let todos = this._todos.getValue();
                 let index = todos.findIndex((todo: ToDo) => todo.id === res.id);
                 this._todos.next(todos.set(index, res));
@@ -64,5 +68,9 @@ export class TodoStore {
         );
 
         return obs;
+    }
+
+    selectToDo(){
+        this.isEditingSubject.next(true);
     }
 }

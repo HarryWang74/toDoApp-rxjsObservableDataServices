@@ -1,4 +1,4 @@
-<div class="TScreateToDo">
+<div class="TScreateToDo" [ngClass]="{'editing': editing }">
   <ng-container *ngIf="!create">
       <div class="createBtnWrapper clickAble"
            (click)="startCreateToDo()">

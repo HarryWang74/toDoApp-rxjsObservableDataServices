@@ -1,4 +1,4 @@
-<div class="TStoDoList">
+<div class="TStoDoList" [ngClass]="{'editing': editing }">
     <div *ngFor="let toDo of todoStore.todos | async"
         (click)="editTodo(toDo)"
         class="toDoWrapper clickAble">

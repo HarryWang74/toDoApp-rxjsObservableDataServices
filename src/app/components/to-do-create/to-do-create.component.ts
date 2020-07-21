@@ -7,6 +7,7 @@ import { TodoStore } from '../../state/TodoStore';
   styleUrls: ['./to-do-create.component.scss']
 })
 export class ToDoCreateComponent implements OnInit {
+  editing: boolean = false;
   create: boolean = false;
   
   @Output() todo = new EventEmitter();
@@ -16,6 +17,9 @@ export class ToDoCreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.todoStore.editing.subscribe((editing: boolean)=>{
+      this.editing = editing;
+    });
   }
 
   startCreateToDo() {

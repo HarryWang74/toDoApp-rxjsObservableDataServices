@@ -1,5 +1,8 @@
 @import "../../variables";
 .TStoDoList {
+    &.editing{
+        display: none;
+    }
     .toDoWrapper {
         @include synergy-round-corners(3px);
         margin-bottom: 10px;
