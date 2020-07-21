@@ -26,7 +26,7 @@ export class ToDoService {
   }
 
   deleteToDo(toDo: ToDo){
-    return this.http.delete('http://localhost:3000/todos/'+ toDo.id, this.httpOptions);
+    return this.http.delete<ToDo>('http://localhost:3000/todos/'+ toDo.id, this.httpOptions);
   }
 
 }

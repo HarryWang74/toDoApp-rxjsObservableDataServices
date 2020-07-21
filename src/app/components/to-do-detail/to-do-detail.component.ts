@@ -42,13 +42,6 @@ export class ToDoDetailComponent implements OnInit {
 	}
 	updateToDo() {
 		this.updateing = true;
-		this.toDoService.updateToDo(this.toDo).subscribe(
-			(result: ToDo) => {
-				console.log(result);
-				this.updateing = false;
-				this.applicationMessageService.publish('FIND_UPDATED_TODO_FROM_LIST', { toDo: result });
-			},
-		)
 	}
     deleteToDo() {
 		this.delToDo.emit(this.toDo);
