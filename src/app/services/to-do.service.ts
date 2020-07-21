@@ -17,8 +17,8 @@ export class ToDoService {
     return this.http.get('http://localhost:3000/todos');
   }
 
-  createToDo(toDo: ToDo){
-    return this.http.post<ToDo>('http://localhost:3000/todos/', toDo, this.httpOptions);
+  createToDo(toDo){
+    return this.http.post('http://localhost:3000/todos/', toDo, this.httpOptions);
   }
 
   updateToDo(toDo: ToDo){

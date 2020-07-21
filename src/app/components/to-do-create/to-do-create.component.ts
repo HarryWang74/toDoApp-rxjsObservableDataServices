@@ -12,7 +12,6 @@ import {TodoStore} from "../../state/TodoStore";
 export class ToDoCreateComponent implements OnInit {
   create: boolean = false;
   creating: boolean = false;
-  toDo: ToDo = new ToDo({id:0, subject:""});
   
   @Output() todo = new EventEmitter();
 
@@ -35,6 +34,20 @@ export class ToDoCreateComponent implements OnInit {
 
   savingToDo(input) {
     this.todo.emit(input.value);
-    input.value = "";
+    setTimeout(() => {
+      input.value = ""
+      this.create = false;
+    }, 500);
+
+    /*
+    let toDo = {id:0, subject: input.value}
+    this.toDoService.createToDo(toDo).subscribe(
+      (result: ToDo) => {
+        console.log(result);
+      },
+  );
+  */
+    // 
+    // input.value = "";
   } 
 }

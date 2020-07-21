@@ -1,11 +1,11 @@
 <div class="TScreateToDo">
-  <ng-container *ngIf="!create && !creating">
+  <ng-container *ngIf="!create">
       <div class="createBtnWrapper clickAble"
            (click)="startCreateToDo()">
           + ToDo
       </div>
   </ng-container>
-  <ng-container *ngIf="create && !creating">
+  <ng-container *ngIf="create">
       <div class="toDoWrapper">
           <span class="toDoIndicator"></span>
           <form id="todo-form" (ngSubmit)="savingToDo(input)" autocomplete="off">

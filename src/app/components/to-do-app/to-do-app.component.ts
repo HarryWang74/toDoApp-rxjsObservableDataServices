@@ -52,11 +52,18 @@ export class ToDoAppComponent implements OnInit {
   }
 
   onAddTodo(description) {
-    let newTodo = new ToDo({id:0, description});
-    this.todoStore.addToDo(newTodo).subscribe(res => {});
+    let newTodo = {id:0, subject: description};
+    this.todoStore.addToDo(newTodo);
+    // if subscribe here, It will write data into data base twice
+    // need to sort out why and how to subscribe Store method
+    /*
+    this.todoStore.addToDo(newTodo).subscribe(res => {
+      console.log(res)
+    });
+    */
   }
 
   onDeleteToDo(toDo){
-    this.todoStore.deleteTodo(toDo).subscribe(res => {});
+    this.todoStore.deleteTodo(toDo);
   }
 }

@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { ToDo } from './../models/todo';
 import { ToDoService } from '../services/to-do.service';
-import {Observable} from "rxjs";
+import {Observable, Observer} from "rxjs";
 import {Subject} from "rxjs";
 import {List} from 'immutable';
 import {asObservable} from "./asObservable";
@@ -29,10 +29,9 @@ export class TodoStore {
             },
         );
     }
-    addToDo(newTodo:ToDo) {
-
-        let obs = this.todoBackendService.createToDo(newTodo);
-
+    addToDo(newTodo): Observable<any> {
+        let obs: Observable<any> = this.todoBackendService.createToDo(newTodo);
+        console.log(obs);
         obs.subscribe(
                 res => {
                     this._todos.next(this._todos.getValue().push(newTodo));
