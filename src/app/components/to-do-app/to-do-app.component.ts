@@ -37,6 +37,7 @@ export class ToDoAppComponent implements OnInit {
   }
 
   onUpdateToDo(toDo){
-    
+    this.todoStore.updateTodo(toDo);
+    this.editing = false;
   }
 }

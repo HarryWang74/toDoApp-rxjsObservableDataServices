@@ -4,5 +4,6 @@
     <to-do-create (todo)="onAddTodo($event)"></to-do-create>
     <to-do-list></to-do-list>
   </ng-container>
-  <to-do-detail (delToDo)="onDeleteToDo($event)"></to-do-detail>
+  <to-do-detail (delToDo)="onDeleteToDo($event)"
+                (updateToDo)="onUpdateToDo($event)"></to-do-detail>
 </div>

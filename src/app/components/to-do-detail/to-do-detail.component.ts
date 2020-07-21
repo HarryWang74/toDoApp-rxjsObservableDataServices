@@ -14,6 +14,7 @@ export class ToDoDetailComponent implements OnInit {
 	editListener: any;
 
 	@Output() delToDo = new EventEmitter();
+	@Output() updateToDo = new EventEmitter();
 
 	constructor(
 		private toDoService: ToDoService,
@@ -31,7 +32,7 @@ export class ToDoDetailComponent implements OnInit {
 	setupSubscriptions() {
 		this.editListener = this.applicationMessageService.subscribe('EDIT_TODO', (params) => {
 			this.updateing = true;
-			this.toDo = Object.assign({}, params.toDo);
+			this.toDo = params.toDo;
 		});
   	}
   
@@ -40,9 +41,14 @@ export class ToDoDetailComponent implements OnInit {
 			this.editListener.remove();
 		}
 	}
-	updateToDo() {
-		this.updateing = true;
+	
+	saveToDo() {
+		this.updateToDo.emit(this.toDo);
+		setTimeout(() => {
+			this.updateing = false;
+		});
 	}
+
     deleteToDo() {
 		this.delToDo.emit(this.toDo);
 		setTimeout(() => {
