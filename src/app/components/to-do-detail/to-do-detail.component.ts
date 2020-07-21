@@ -9,7 +9,7 @@ import { ToDo } from './../../models/todo';
 export class ToDoDetailComponent implements OnInit {
 	@Output() delToDo = new EventEmitter();
 	@Output() updateToDo = new EventEmitter();
-	@Input() selectedToDo: any;
+	@Input() selectedToDo: ToDo;
 	@Input() editing: boolean;
 
 	constructor(
