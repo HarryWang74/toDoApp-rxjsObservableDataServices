@@ -1,7 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ToDo } from './../../models/todo';
-import { ToDoService } from '../../services/to-do.service';
-import {TodoStore} from "../../state/TodoStore";
 
 @Component({
   selector: 'to-do-create',
@@ -10,14 +7,10 @@ import {TodoStore} from "../../state/TodoStore";
 })
 export class ToDoCreateComponent implements OnInit {
   create: boolean = false;
-  creating: boolean = false;
   
   @Output() todo = new EventEmitter();
 
-  constructor(
-    private toDoService: ToDoService,
-    private toDoStore: TodoStore
-  ) { }
+  constructor() { }
 
   ngOnInit() {
   }
@@ -35,6 +28,6 @@ export class ToDoCreateComponent implements OnInit {
     setTimeout(() => {
       input.value = ""
       this.create = false;
-    }, 500);
+    });
   } 
 }
