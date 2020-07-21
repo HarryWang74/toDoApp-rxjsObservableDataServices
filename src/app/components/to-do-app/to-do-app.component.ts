@@ -18,21 +18,6 @@ export class ToDoAppComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddTodo(description) {
-    let newTodo = {id:0, subject: description};
-    this.todoStore.addToDo(newTodo);
-    // if subscribe here, It will write data into data base twice
-    // need to sort out  how to subscribe Store method
-
-    /*
-    this.todoStore.addToDo(newTodo).subscribe(
-      (res: ToDo) => {
-        console.log(res)
-      }
-    );
-    */
-  }
-
   onDeleteToDo(toDo){
     this.todoStore.deleteTodo(toDo);
     this.editing = false;

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ToDo } from './../../models/todo';
+import { TodoStore } from '../../state/TodoStore';
 
 @Component({
   selector: 'to-do-detail',
@@ -13,6 +14,7 @@ export class ToDoDetailComponent implements OnInit {
 	@Input() editing: boolean;
 
 	constructor(
+		private todoStore: TodoStore
 	) { }
 
 	ngOnInit() {
@@ -20,14 +22,14 @@ export class ToDoDetailComponent implements OnInit {
 	}
 
 	saveToDo() {
-		this.updateToDo.emit(this.selectedToDo);
+		this.todoStore.updateTodo(this.selectedToDo);
 		setTimeout(() => {
 			this.editing = false;
 		});
 	}
 
     deleteToDo() {
-		this.delToDo.emit(this.selectedToDo);
+		this.todoStore.deleteTodo(this.selectedToDo);
 		setTimeout(() => {
 			this.editing = false;
 		});
