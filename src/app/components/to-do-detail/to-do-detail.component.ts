@@ -8,7 +8,7 @@ import { TodoStore } from '../../state/TodoStore';
   styleUrls: ['./to-do-detail.component.scss']
 })
 export class ToDoDetailComponent implements OnInit {
-	@Input() selectedToDo: ToDo;
+	selectedToDo: ToDo;
 	editing: boolean = false;
 
 	constructor(
@@ -19,6 +19,9 @@ export class ToDoDetailComponent implements OnInit {
 		this.todoStore.editing.subscribe((editing: boolean)=>{
 			this.editing = editing;
 		});
+		this.todoStore.selectedToDo.subscribe((toDo:ToDo)=>{
+			this.selectedToDo = toDo
+		})
 	}
 
 	saveToDo() {

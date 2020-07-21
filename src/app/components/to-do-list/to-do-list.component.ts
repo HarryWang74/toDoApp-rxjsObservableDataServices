@@ -23,8 +23,8 @@ export class ToDoListComponent implements OnInit {
   }
 
   editTodo(toDo: ToDo) {
-    console.log("click");
-    this.todoStore.selectToDo();
+    console.log(toDo);
+    this.todoStore.selectToDo(toDo);
     // this.selectToDo.emit(toDo);
   }
 }

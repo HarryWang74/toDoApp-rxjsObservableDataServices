@@ -10,9 +10,12 @@ import {BehaviorSubject} from "rxjs";
 
 @Injectable()
 export class TodoStore {
-    isEditingSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
-    editing = this.isEditingSubject.asObservable()
+    private isEditingSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    editing = this.isEditingSubject.asObservable();
     
+    private _selectedToDo: BehaviorSubject<Object> = new BehaviorSubject(Object);
+    selectedToDo = this._selectedToDo.asObservable()
+
     private _todos: BehaviorSubject<List<ToDo>> = new BehaviorSubject(List([]));
 
     constructor(private todoBackendService: ToDoService) {
@@ -23,11 +26,12 @@ export class TodoStore {
         return asObservable(this._todos);
     }
 
+
+
     loadInitialData() {
         this.todoBackendService.getToDoList().subscribe(
             (result: ToDo[]) => {          
                     this._todos.next(List(result));
-                    console.log(this._todos);
             },
         );
     }
@@ -43,9 +47,11 @@ export class TodoStore {
     }
 
     deleteTodo(deleted:ToDo) {
+        this.isEditingSubject.next(true);
         let obs = this.todoBackendService.deleteToDo(deleted);
         obs.subscribe(
             res => {
+                this.isEditingSubject.next(false);
                 let todos: List<ToDo> = this._todos.getValue();
                 let index = todos.findIndex((todo) => todo.id === deleted.id);
                 this._todos.next(todos.delete(index));
@@ -70,7 +76,9 @@ export class TodoStore {
         return obs;
     }
 
-    selectToDo(){
+    selectToDo(toDo){
         this.isEditingSubject.next(true);
+        this._selectedToDo.next(toDo)
+        //this.selectedToDo = toDo;
     }
 }
