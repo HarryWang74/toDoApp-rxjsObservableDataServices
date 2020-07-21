@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDo } from './../../models/todo';
-import { ApplicationMessageService } from '../../services/applicationMessage.service';
 import {TodoStore} from "../../state/TodoStore";
-
 
 @Component({
   selector: 'to-do-list',
   templateUrl: './to-do-list.component.html',
   styleUrls: ['./to-do-list.component.scss']
 })
+
 export class ToDoListComponent implements OnInit {
+  @Output() selectToDo = new EventEmitter();
+
   constructor(
     private todoStore: TodoStore,
-    private applicationMessageService: ApplicationMessageService
   ) { }
 
   ngOnInit() {
   }
 
   editTodo(toDo: ToDo) {
-    this.applicationMessageService.publish('EDIT_TODO', { toDo: toDo });
+    this.selectToDo.emit(toDo);
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDo } from './../../models/todo';
 import { ToDoService } from '../../services/to-do.service';
-import { ApplicationMessageService } from '../../services/applicationMessage.service';
 import {TodoStore} from "../../state/TodoStore";
 
 @Component({
@@ -17,8 +16,7 @@ export class ToDoCreateComponent implements OnInit {
 
   constructor(
     private toDoService: ToDoService,
-    private toDoStore: TodoStore,
-    private applicationMessageService: ApplicationMessageService
+    private toDoStore: TodoStore
   ) { }
 
   ngOnInit() {

@@ -1,9 +1,13 @@
 <div class="container">
   <h3>ToDoList</h3>
+  
   <ng-container *ngIf="!editing">
     <to-do-create (todo)="onAddTodo($event)"></to-do-create>
-    <to-do-list></to-do-list>
+    <to-do-list (selectToDo)="onSelectToDo($event)"></to-do-list>
   </ng-container>
-  <to-do-detail (delToDo)="onDeleteToDo($event)"
+  
+  <to-do-detail [selectedToDo]="selectedToDo"
+                [editing]="editing"  
+                (delToDo)="onDeleteToDo($event)"
                 (updateToDo)="onUpdateToDo($event)"></to-do-detail>
 </div>

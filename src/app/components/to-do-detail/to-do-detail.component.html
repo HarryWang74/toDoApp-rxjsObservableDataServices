@@ -1,10 +1,10 @@
-<div class="TStoDoDetail" [ngClass]="{'updateing': updateing }" >  
-  <div class="row" *ngIf="toDo">
+<div class="TStoDoDetail" [ngClass]="{'updateing': editing }" >  
+  <div class="row" *ngIf="selectedToDo">
       <div class="col-md-12">
           <div class="form-group toDoSubject">
               <input type="text"
                      class="clickable"
-                     [(ngModel)]="toDo.subject" />
+                     [(ngModel)]="selectedToDo.subject" />
           </div>
       </div>
       <div>

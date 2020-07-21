@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToDoService } from './services/to-do.service';
-import { ApplicationMessageService } from './services/applicationMessage.service';
 import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -37,7 +36,7 @@ import { TodoStore } from './state/TodoStore';
   exports: [
     MatIconModule
   ],
-  providers: [ToDoService, ApplicationMessageService, TodoStore],
+  providers: [ToDoService, TodoStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

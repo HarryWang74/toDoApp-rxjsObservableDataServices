@@ -9,7 +9,8 @@ import { ToDo } from './../../models/todo';
 })
 export class ToDoAppComponent implements OnInit {
   editing: boolean = false;
-
+  selectedToDo: ToDo;
+  
   constructor(
     private todoStore: TodoStore
   ) { }
@@ -39,5 +40,11 @@ export class ToDoAppComponent implements OnInit {
   onUpdateToDo(toDo){
     this.todoStore.updateTodo(toDo);
     this.editing = false;
+  }
+
+  onSelectToDo(toDo){
+    this.selectedToDo = toDo;
+    this.editing = true;
+    console.log(this.selectedToDo);
   }
 }
