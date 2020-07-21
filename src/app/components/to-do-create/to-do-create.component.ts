@@ -38,16 +38,5 @@ export class ToDoCreateComponent implements OnInit {
       input.value = ""
       this.create = false;
     }, 500);
-
-    /*
-    let toDo = {id:0, subject: input.value}
-    this.toDoService.createToDo(toDo).subscribe(
-      (result: ToDo) => {
-        console.log(result);
-      },
-  );
-  */
-    // 
-    // input.value = "";
   } 
 }

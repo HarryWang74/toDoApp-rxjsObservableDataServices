@@ -51,8 +51,9 @@ export class ToDoDetailComponent implements OnInit {
 		)
 	}
     deleteToDo() {
-		this.updateing = true;
-		this.applicationMessageService.publish('REMOVE_DELETED_TODO_FROM_LIST', {});
 		this.delToDo.emit(this.toDo);
+		setTimeout(() => {
+			this.updateing = false;
+		});
   	}
 }

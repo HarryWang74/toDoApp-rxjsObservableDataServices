@@ -29,15 +29,15 @@ export class TodoStore {
             },
         );
     }
-    addToDo(newTodo): Observable<any> {
-        let obs: Observable<any> = this.todoBackendService.createToDo(newTodo);
-        console.log(obs);
+    addToDo(newTodo): Observable<Object> {
+        let obs: Observable<Object> = this.todoBackendService.createToDo(newTodo);
         obs.subscribe(
-                res => {
-                    this._todos.next(this._todos.getValue().push(newTodo));
-                });
-
-        return obs;
+            (res:ToDo) => {
+                this._todos.next(this._todos.getValue().push(res));
+            }
+        );
+            
+        if(obs) return obs;
     }
 
     deleteTodo(deleted:ToDo) {
@@ -53,10 +53,4 @@ export class TodoStore {
 
         return obs;
     }
-    /*
-
-
-
-
-    */
 }
